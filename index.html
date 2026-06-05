@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stearn Designs</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox__close">&times;</span>
+    <img class="lightbox__img" src="" alt="">
+  </div>
+
+  <!-- Top Ticker Banner -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <div class="ticker__item">Get in Touch With Your Projects</div>
+      <div class="ticker__item">Comprehensive Branding Systems</div>
+      <div class="ticker__item">Based in the UK</div>
+      <div class="ticker__item">Professional Web Design</div>
+      <div class="ticker__item">Social Media Management</div>
+      <div class="ticker__item">Get in Touch With Your Projects</div>
+      <div class="ticker__item">Comprehensive Branding Systems</div>
+      <div class="ticker__item">Based in the UK</div>
+      <div class="ticker__item">Professional Web Design</div>
+      <div class="ticker__item">Social Media Management</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" class="logo">
+        <img class="logo_img" src="assets/stearn-designs-logo.png" alt="Stearn Designs logo">
+      </a>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Mobile Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <video id="heroVideo" class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/showreel.mp4" type="video/mp4">
+    </video>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content wrap" id="heroContent">
+      <div class="eyebrow">Design · Motion · Web</div>
+      <h1>Design With Edge.</h1>
+      <p>Crafting brands, sites, and content that cut through the noise.</p>
+      <div class="cta" role="group" aria-label="Primary calls to action">
+        <a class="btn" href="portfolio.html">View Portfolio</a>
+        <a class="btn btn--ghost" href="contact.html">Start a Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Do -->
+  <section class="features wrap">
+    <h2 class="section-title">What I Do</h2>
+    <div class="grid-5">
+
+      <article class="card" data-fly="left">
+        <img class="card__img" src="assets/branding2.png" alt="Brand work">
+        <div class="card__body">
+          <h3 class="card__title">Comprehensive Branding</h3>
+          <p class="card__text">Striking logos, brand guidelines and systems backed by expert visual communication.</p>
+        </div>
+      </article>
+
+      <article class="card" data-fly="left">
+        <img class="card__img" src="assets/web-design2.png" alt="Web & UI work">
+        <div class="card__body">
+          <h3 class="card__title">Web Design & UI</h3>
+          <p class="card__text">Professional web and UI design, crafted for a high-quality user experience.</p>
+        </div>
+      </article>
+
+      <article class="card" data-fly="bottom">
+        <img class="card__img" src="assets/motion-design.png" alt="Motion content">
+        <div class="card__body">
+          <h3 class="card__title">Motion Design</h3>
+          <p class="card__text">Stay on trend with short-form social content or make an impression with distinctive, on-brand animations.</p>
+        </div>
+      </article>
+
+      <article class="card" data-fly="right">
+        <img class="card__img" src="assets/social-media-management.png" alt="Social Media">
+        <div class="card__body">
+          <h3 class="card__title">Social Media Management</h3>
+          <p class="card__text">Take the hassle out of social media design and scheduling.</p>
+        </div>
+      </article>
+
+      <article class="card" data-fly="right">
+        <img class="card__img" src="assets/poster-design.png" alt="Poster Design">
+        <div class="card__body">
+          <h3 class="card__title">Poster & Cover Art</h3>
+          <p class="card__text">Effective standalone graphics for any business.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Selected Projects -->
+  <section class="projects wrap">
+    <div class="section-head">
+      <h2>Selected Projects</h2>
+      <a class="btn btn--ghost" href="portfolio.html">See all</a>
+    </div>
+
+    <div class="project-gallery-wrapper">
+      <div class="project-gallery" id="projectGallery">
+
+        <a class="tile" href="alicia-faye-beauty.html">
+          <img class="tile__img" src="assets/alicia-faye-card.png" alt="Alicia Faye Beauty">
+          <div class="tile__meta">
+            <h3>Alicia Faye Beauty</h3>
+            <p>Branding · Web Design · Social Media</p>
+          </div>
+        </a>
+
+        <a class="tile" href="#">
+          <img class="tile__img" src="assets/alpha-red-card2.png" alt="Alpha Red">
+          <div class="tile__meta">
+            <h3>Alpha Red</h3>
+            <p>Branding · Web Design</p>
+          </div>
+        </a>
+
+        <a class="tile" href="#">
+          <img class="tile__img" src="assets/bolt-card.png" alt="BOLT">
+          <div class="tile__meta">
+            <h3>BOLT</h3>
+            <p>Branding · Motion · Print</p>
+          </div>
+        </a>
+
+        <a class="tile" href="#">
+          <img class="tile__img" src="assets/pilot-house-card.png" alt="Pilot House">
+          <div class="tile__meta">
+            <h3>Pilot House</h3>
+            <p>Spatial Design · Branding · Social Media · Poster Design</p>
+          </div>
+        </a>
+
+        <a class="tile" href="#">
+          <img class="tile__img" src="assets/plus-card.png" alt="Plus">
+          <div class="tile__meta">
+            <h3>Plus</h3>
+            <p>Editorial · Branding · UI/UX</p>
+          </div>
+        </a>
+
+        <a class="tile" href="#">
+          <img class="tile__img" src="assets/art-of-origami-card.png" alt="The Art of Origami">
+          <div class="tile__meta">
+            <h3>The Art of Origami</h3>
+            <p>Editorial · Social Media · Print Design</p>
+          </div>
+        </a>
+
+      </div>
+      <div class="gallery-fade-left"></div>
+      <div class="gallery-fade-right"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <small>© 2025 Stearn Designs. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
