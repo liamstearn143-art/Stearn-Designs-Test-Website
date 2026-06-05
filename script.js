@@ -85,18 +85,23 @@ function initVideoFallback() {
 /* ─── Scroll-Driven Fly-In Animations ────────── */
 function initScrollFlyAnimations() {
   const cards = document.querySelectorAll('[data-fly]');
-  if (!cards.length) return;
 
-  // Use IntersectionObserver to toggle .visible based on scroll position.
-  // rootMargin pushes the trigger point so cards fly out again on scroll-up.
-  const obs = new IntersectionObserver(entries => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.15
   });
+
+  cards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 120}ms`;
+    observer.observe(card);
+  });
+}
 
   cards.forEach((card, i) => {
     // Stagger the transition delay so cards don't all fly in at once
@@ -108,45 +113,35 @@ function initScrollFlyAnimations() {
 /* ─── Drag-to-Scroll Project Gallery ─────────── */
 function initProjectGallery() {
   const gallery = document.getElementById('projectGallery');
+
   if (!gallery) return;
 
   let isDragging = false;
-  let startX     = 0;
-  let scrollLeft = 0;
-  let moved      = false;
+  let startX;
+  let startTransform = 0;
+  let currentTransform = 0;
 
   gallery.addEventListener('mousedown', e => {
     isDragging = true;
-    moved      = false;
-    startX     = e.pageX - gallery.offsetLeft;
-    scrollLeft = gallery.scrollLeft;
-    gallery.classList.add('dragging');
+
+    gallery.style.animationPlayState = 'paused';
+
+    startX = e.clientX;
+    startTransform = currentTransform;
   });
 
-  gallery.addEventListener('mousemove', e => {
+  window.addEventListener('mousemove', e => {
     if (!isDragging) return;
-    const x    = e.pageX - gallery.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    if (Math.abs(walk) > 5) moved = true;
-    gallery.scrollLeft = scrollLeft - walk;
+
+    const delta = e.clientX - startX;
+
+    currentTransform = startTransform + delta;
+
+    gallery.style.transform =
+      `translateX(${currentTransform}px)`;
   });
 
-  gallery.addEventListener('mouseup', e => {
+  window.addEventListener('mouseup', () => {
     isDragging = false;
-    gallery.classList.remove('dragging');
-    // Prevent the click event from firing on the tile if the user dragged
-    if (moved) e.preventDefault();
-  });
-
-  gallery.addEventListener('mouseleave', () => {
-    isDragging = false;
-    gallery.classList.remove('dragging');
-  });
-
-  // Block click navigation when the user dragged (not just clicked)
-  gallery.querySelectorAll('.tile').forEach(tile => {
-    tile.addEventListener('click', e => {
-      if (moved) e.preventDefault();
-    });
   });
 }
