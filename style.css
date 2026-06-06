@@ -335,21 +335,12 @@ header {
   display: flex;
   gap: 1.25rem;
   width: max-content;
-  animation: galleryScroll 35s linear infinite;
+  cursor: grab;
+  user-select: none;
 }
 
-.project-gallery:hover {
-  animation-play-state: paused;
-}
-
-@keyframes galleryScroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - 0.625rem));
-  }
+.project-gallery.dragging {
+  cursor: grabbing;
 }
 
 .gallery-fade-left,
