@@ -110,38 +110,71 @@ function initScrollFlyAnimations() {
   });
 }
 
-/* ─── Drag-to-Scroll Project Gallery ─────────── */
+
+/* ─── Project Gallery ────────── */
 function initProjectGallery() {
   const gallery = document.getElementById('projectGallery');
 
   if (!gallery) return;
 
+  // Duplicate content once
+  gallery.innerHTML += gallery.innerHTML;
+
   let isDragging = false;
-  let startX;
-  let startTransform = 0;
-  let currentTransform = 0;
+  let startX = 0;
+  let scrollStart = 0;
+
+  const halfWidth = () => gallery.scrollWidth / 2;
+
+  function maintainLoop() {
+    const halfway = halfWidth();
+
+    if (gallery.scrollLeft >= halfway) {
+      gallery.scrollLeft -= halfway;
+    }
+
+    if (gallery.scrollLeft <= 0) {
+      gallery.scrollLeft += halfway;
+    }
+  }
+
+  gallery.scrollLeft = halfWidth() / 2;
+
+  gallery.addEventListener('scroll', maintainLoop);
 
   gallery.addEventListener('mousedown', e => {
     isDragging = true;
+    startX = e.pageX;
+    scrollStart = gallery.scrollLeft;
+    gallery.classList.add('dragging');
+  });
 
-    gallery.style.animationPlayState = 'paused';
-
-    startX = e.clientX;
-    startTransform = currentTransform;
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    gallery.classList.remove('dragging');
   });
 
   window.addEventListener('mousemove', e => {
     if (!isDragging) return;
 
-    const delta = e.clientX - startX;
+    const walk = (e.pageX - startX) * 1.5;
 
-    currentTransform = startTransform + delta;
-
-    gallery.style.transform =
-      `translateX(${currentTransform}px)`;
+    gallery.scrollLeft = scrollStart - walk;
   });
 
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
+  gallery.addEventListener('wheel', e => {
+    e.preventDefault();
+    gallery.scrollLeft += e.deltaY;
+  }, { passive: false });
+
+  gallery.addEventListener('touchstart', e => {
+    startX = e.touches[0].pageX;
+    scrollStart = gallery.scrollLeft;
+  });
+
+  gallery.addEventListener('touchmove', e => {
+    const walk = (e.touches[0].pageX - startX);
+
+    gallery.scrollLeft = scrollStart - walk;
   });
 }
